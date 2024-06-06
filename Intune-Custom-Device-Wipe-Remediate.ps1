@@ -109,14 +109,15 @@ $session.InvokeMethod($namespaceName, $instance, $methodName, $params)
 		New-Item -Path c:\programdata\customscripts -ItemType Directory -Force -Confirm:$false | out-null
 		Out-File -FilePath $(Join-Path $env:ProgramData CustomScripts\reset.ps1) -Encoding unicode -Force -InputObject $reset -Confirm:$false
 
-		Start-Process -FilePath "powershell.exe" -windowstyle hidden -ArgumentList '-ExecutionPolicy Bypass -File "c:\programdata\customscripts\reset.ps1"'
-        Return $results
-        exit 0
+		$results = Start-Process -FilePath "powershell.exe" -windowstyle hidden -ArgumentList '-ExecutionPolicy Bypass -File "c:\programdata\customscripts\reset.ps1"' -Passthru -Wait
+    if (($results -ne $null)){
+		Return $results
+		exit 0
     }
     else{
         #No matching scheduled task
 		#Below necessary for Intune as of 10/2019 will only remediate Exit Code 1
-        Write-Host "No-Task"        
+        Write-Host "Wipe-Fail"        
         exit 1
     }   
 }
