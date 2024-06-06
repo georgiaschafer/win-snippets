@@ -1,6 +1,6 @@
 #=============================================================================================================================
 #
-# Script Name:     Remediate-Intune-Device-Wipe.ps1
+# Script Name:     Intune-Custom-Device-Wipe-Remediate.ps1
 # Description:     Execute device wipe using Intune remediation. You could set this as the detection script and avoid the 
 #				   redundant detection script. The main reason to setup as a remediation script is to take advantage of
 #				   the Run Remediation command available in Intune to run the script on demand.
