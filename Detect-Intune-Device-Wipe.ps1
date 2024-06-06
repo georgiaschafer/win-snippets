@@ -1,7 +1,7 @@
 #=============================================================================================================================
 #
 # Script Name:     Detect-Intune-Device-Wipe.ps1
-# Description:     Check for existance of scheduled task to direct Copilot requests to cdp.copilot.com and nochat.bing.com
+# Description:     Check for existance of scheduled task to run device wipe
 # Notes:           https://learn.microsoft.com/en-us/mem/intune/fundamentals/powershell-scripts-remediation
 #				   https://call4cloud.nl/2022/04/mamma-mia-here-we-wipe-again/
 #				   https://call4cloud.nl/wp-content/uploads/2022/03/wipeitall.zip
