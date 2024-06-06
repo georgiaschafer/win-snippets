@@ -1,6 +1,6 @@
 #=============================================================================================================================
 #
-# Script Name:     Detect-Intune-Device-Wipe.ps1
+# Script Name:     Intune-Custom-Device-Wipe-Detect.ps1
 # Description:     Check for existance of scheduled task to run device wipe
 # Notes:           https://learn.microsoft.com/en-us/mem/intune/fundamentals/powershell-scripts-remediation
 #				   https://call4cloud.nl/2022/04/mamma-mia-here-we-wipe-again/
