@@ -6,7 +6,8 @@
 # Notes:           
 # Author: 		   Georgia Schafer
 # Date:			   20240605
-# WARNING - SCRIPT WILL REMOVE BITLOCKER KEYS FROM TPM AND ROTATE RECOVERY PASSWORD - USE EXTREME CAUTION
+# WARNING - USE AT YOUR OWN RISK!
+#	SCRIPT WILL REMOVE BITLOCKER KEYS FROM TPM AND ROTATE RECOVERY PASSWORD - USE EXTREME CAUTION
 #
 #=============================================================================================================================
 
