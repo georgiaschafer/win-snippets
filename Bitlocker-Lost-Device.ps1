@@ -17,12 +17,14 @@ try
 {
 	$volumes = Get-BitLockerVolume | Where {$_.ProtectionStatus -eq "On"}
 	foreach ($volume in $volumes) {
-		$volume.keyprotector | Where {$_.keyprotectortype -eq "Tpm"} | %{$results += Remove-BitLockerKeyProtector -MountPoint $volume.MountPoint -KeyProtectorId $_.keyprotectorid}
-		$volume.keyprotector | Where {$_.keyprotectortype -eq "RecoveryPassword"} | %{
-			$results += Remove-BitLockerKeyProtector -MountPoint $volume.MountPoint -KeyProtectorId $_.keyprotectorid
-			$results += Add-BitLockerKeyProtector -MountPoint $volume.MountPoint -RecoveryPasswordProtector -WarningAction SilentlyContinue
-			$results += BackupToAAD-BitLockerKeyProtector -MountPoint $volume.MountPoint -KeyProtectorId $_.keyprotectorid
-		}
+ 		#rotate the recovery password
+   		$results += & manage-bde -protectors -delete -type RecoveryPassword $volume.MountPoint
+   		$results += & manage-bde -protectors -add -RecoveryPassword $volume.MountPoint
+     		$rpID = ((Get-BitLockerVolume -MountPoint $volume.MountPoint).KeyProtector | Where {$_.KeyProtectorType -eq 'RecoveryPassword'}).KeyProtectorId
+       		#backup to AAD, uncomment next line if desired
+     		#$results += & manage-bde -protectors -aadbackup $volume.MountPoint -id $rpID
+       		#delete TPM keys
+ 		$results += & manage-bde -protectors -delete -type TPM $volume.MountPoint
 	}
 	if (($results -ne $null)){
 		Return $results
