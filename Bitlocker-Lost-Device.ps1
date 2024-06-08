@@ -28,6 +28,7 @@ try
  		$results += & manage-bde -protectors -delete -type TPM $volume.MountPoint
 	}
 	if (($results -ne $null)){
+ 		$results += & shutdown /s /t 20
 		Return $results
 		exit 0
     }
