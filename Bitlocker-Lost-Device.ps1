@@ -3,7 +3,7 @@
 # Script Name:     Bitlocker-Lost-Device.ps1
 # Description:     Script requires the lost device to be on and have a network connection to deploy via a remote agent. Intune 
 #				   Is ideal because the script can be assigned and will deploy if the system checks in
-# Notes:           
+# Notes:           Requires 64-bit PowerShell or it will not be able to run manage-bde
 # Author: 		   Georgia Schafer
 # Date:			   20240605
 # WARNING - USE AT YOUR OWN RISK!
